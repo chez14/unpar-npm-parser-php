@@ -17,7 +17,7 @@ interface SolverInterface
      *
      * @param string $npm the NPM.
      * @param bool $force Force parse the NPM.
-     * @return array will return at least `npm`, `jurusan`, `jurusan_id` and `enrollment_year`.
+     * @return array will return at least `npm`, `jurusan`, `prodi_id` and `enrollment_year`.
      */
     public function getInfo(string $npm, bool $force = false): array;
 
@@ -26,7 +26,7 @@ interface SolverInterface
      * Will not prechecks everything, just pure splitups.
      *
      * @param string $npm the NPM.
-     * @return array will return at least `npm`, `jurusan`, `jurusan_id` and `enrollment_year`.
+     * @return array will return at least `npm`, `jurusan`, `prodi_id` and `enrollment_year`.
      */
     public function parse(string $npm): array;
 }

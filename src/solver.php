@@ -51,7 +51,7 @@ class Solver
      *
      * @param string $npm
      * @return array a bunch of infos in an array with keys: `npm`, `jurusan`, 
-     *      `jurusan_id`, `fakultas`, `fakultas_id`, and `jenjang`.
+     *      `prodi_id`, `fakultas`, `fakultas_id`, and `jenjang`.
      */
     public static function getInfo(string $npm): array
     {

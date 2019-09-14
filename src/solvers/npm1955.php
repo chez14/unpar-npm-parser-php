@@ -111,7 +111,7 @@ class NPM1995 implements SolverInterface
         // 0123 456 789
         return [
             "enrollment_year" => substr($npm, 0, 4),
-            "jurusan_id" => substr($npm, 4, 3),
+            "prodi_id" => substr($npm, 4, 3),
             "npm" => substr($npm, 7, 3)
         ];
     }
@@ -128,7 +128,7 @@ class NPM1995 implements SolverInterface
         if (!($result['enrollment_year'] < 2018 && $result['enrollment_year'] > 1994)) {
             throw new BadEnrollmentYear();
         }
-        if (!array_key_exists($result['jurusan_id'], self::$jurusan)) {
+        if (!array_key_exists($result['prodi_id'], self::$jurusan)) {
             throw new NotParseable();
         }
         return true;
@@ -146,20 +146,20 @@ class NPM1995 implements SolverInterface
             }
         }
 
-        $result['jurusan'] = self::$jurusan[$result['jurusan_id']][0];
+        $result['jurusan'] = self::$jurusan[$result['prodi_id']][0];
 
         //fakultas
-        $fakultas = $result['jurusan_id'][0];
-        if (array_key_exists("fakultas", self::$jurusan[$result['jurusan_id']])) {
-            $fakultas = self::$jurusan[$result['jurusan_id']]['fakultas'];
+        $fakultas = $result['prodi_id'][0];
+        if (array_key_exists("fakultas", self::$jurusan[$result['prodi_id']])) {
+            $fakultas = self::$jurusan[$result['prodi_id']]['fakultas'];
         }
         $result['fakultas_id'] = $fakultas;
         $result['fakultas'] = self::$fakultas[$fakultas];
 
         //jenjang
         $jenjang = self::$jenjang['1'];
-        if (array_key_exists("jenjang", self::$jurusan[$result['jurusan_id']])) {
-            $jenjang = self::$jenjang[self::$jurusan[$result['jurusan_id']]['jenjang']];
+        if (array_key_exists("jenjang", self::$jurusan[$result['prodi_id']])) {
+            $jenjang = self::$jenjang[self::$jurusan[$result['prodi_id']]['jenjang']];
         }
         $result['jenjang'] = $jenjang;
 

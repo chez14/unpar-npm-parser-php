@@ -19,7 +19,7 @@ var_dump($npm_info);
 array(7) {
   ["enrollment_year"]=>
   string(4) "2016"
-  ["jurusan_id"]=>
+  ["prodi_id"]=>
   string(3) "730"
   ["npm"]=>
   string(3) "011"

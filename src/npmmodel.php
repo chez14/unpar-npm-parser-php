@@ -2,7 +2,7 @@
 namespace Chez14\NpmParser;
 
 class NpmModel {
-    protected $npm, $jurusan_id, $fakultas, $jenjang;
+    protected $npm, $prodi_id, $fakultas, $jenjang;
 
     
 }

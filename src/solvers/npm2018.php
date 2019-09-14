@@ -98,7 +98,7 @@ class NPM2018 implements SolverInterface
         // 0 12 34 56 789
         return [
             "jenjang" => substr($npm, 0, 1),
-            "jurusan_id" => substr($npm, 1, 2),
+            "prodi_id" => substr($npm, 1, 2),
             "enrollment_year" => "20" . substr($npm, 3, 2),
             "jenis_mahasiswa" => substr($npm, 5, 2),
             "npm" => substr($npm, 7, 3)
@@ -117,7 +117,7 @@ class NPM2018 implements SolverInterface
         if (!($result['enrollment_year'] >= 2018)) {
             throw new BadEnrollmentYear();
         }
-        if (!array_key_exists($result['jurusan_id'], self::$jurusan)) {
+        if (!array_key_exists($result['prodi_id'], self::$jurusan)) {
             throw new NotParseable();
         }
         if (!array_key_exists($result['jenjang'], self::$jenjang)) {
@@ -141,10 +141,10 @@ class NPM2018 implements SolverInterface
             }
         }
 
-        $result['jurusan'] = self::$jurusan[$result['jurusan_id']][0];
+        $result['jurusan'] = self::$jurusan[$result['prodi_id']][0];
 
         //fakultas
-        $fakultas = self::$jurusan[$result['jurusan_id']]['fakultas'];
+        $fakultas = self::$jurusan[$result['prodi_id']]['fakultas'];
         if($result['jenjang'] == "8" || $result['jenjang'] == "9") {
             $fakultas = "8";
         }

@@ -18,12 +18,12 @@ class Npm1995Test extends TestCase
 
         $parsed_npm = $npm1955->parse("2016730011");
         $this->assertSame("2016", $parsed_npm['enrollment_year']);
-        $this->assertSame("730", $parsed_npm['jurusan_id']);
+        $this->assertSame("730", $parsed_npm['prodi_id']);
         $this->assertSame("011", $parsed_npm['npm']);
 
         $parsed_npm = $npm1955->getInfo("2016730011");
         $this->assertSame("2016", $parsed_npm['enrollment_year']);
-        $this->assertSame("730", $parsed_npm['jurusan_id']);
+        $this->assertSame("730", $parsed_npm['prodi_id']);
         $this->assertSame("011", $parsed_npm['npm']);
         $this->assertSame("7", $parsed_npm['fakultas_id']);
     }
@@ -38,12 +38,12 @@ class Npm1995Test extends TestCase
 
         $parsed_npm = $npm1955->parse("2020730011");
         $this->assertSame("2020", $parsed_npm['enrollment_year']);
-        $this->assertSame("730", $parsed_npm['jurusan_id']);
+        $this->assertSame("730", $parsed_npm['prodi_id']);
         $this->assertSame("011", $parsed_npm['npm']);
 
         $parsed_npm = $npm1955->getInfo("2020730011", true);
         $this->assertSame("2020", $parsed_npm['enrollment_year']);
-        $this->assertSame("730", $parsed_npm['jurusan_id']);
+        $this->assertSame("730", $parsed_npm['prodi_id']);
         $this->assertSame("011", $parsed_npm['npm']);
         $this->assertSame("7", $parsed_npm['fakultas_id']);
     }
