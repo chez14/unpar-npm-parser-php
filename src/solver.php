@@ -41,11 +41,6 @@ class Solver
         throw new NotParseable("Thone NPM are not parseable by this solvers.");
     }
 
-    public function getInfoAsNpmModel(string $npm): array
-    {
-        return [];
-    }
-
     /**
      * Get all information about this NPM. Including Jurusan, Fakultas, and Jenjang.
      *
