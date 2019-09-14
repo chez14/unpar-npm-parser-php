@@ -114,7 +114,7 @@ class NPM2018 implements SolverInterface
     protected function precheck(array $npms): bool
     {
         $result = $npms;
-        if (!($result['enrollment_year'] >= 2018)) {
+        if (intval($result['enrollment_year']) < 2018) {
             throw new BadEnrollmentYear();
         }
         if (!array_key_exists($result['prodi_id'], self::$jurusan)) {

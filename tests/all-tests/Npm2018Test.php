@@ -17,14 +17,14 @@ class Npm2018Test extends TestCase
         $npm2018 = new \Chez14\NpmParser\Solvers\NPM2018();
 
         $parsed_npm = $npm2018->parse("6181801001");
-        $this->assertSame("2016", $parsed_npm['enrollment_year']);
-        $this->assertSame("730", $parsed_npm['prodi_id']);
-        $this->assertSame("011", $parsed_npm['npm']);
+        $this->assertSame("2018", $parsed_npm['enrollment_year']);
+        $this->assertSame("18", $parsed_npm['prodi_id']);
+        $this->assertSame("001", $parsed_npm['no_urut']);
 
         $parsed_npm = $npm2018->getInfo("6181801001");
-        $this->assertSame("2016", $parsed_npm['enrollment_year']);
-        $this->assertSame("730", $parsed_npm['prodi_id']);
-        $this->assertSame("011", $parsed_npm['npm']);
+        $this->assertSame("2018", $parsed_npm['enrollment_year']);
+        $this->assertSame("18", $parsed_npm['prodi_id']);
+        $this->assertSame("001", $parsed_npm['no_urut']);
         $this->assertSame("7", $parsed_npm['fakultas_id']);
     }
 
@@ -36,14 +36,14 @@ class Npm2018Test extends TestCase
     {
         $npm2018 = new \Chez14\NpmParser\Solvers\NPM2018();
 
-        $parsed_npm = $npm2018->parse("6161801011");
-        $this->assertSame("2020", $parsed_npm['enrollment_year']);
-        $this->assertSame("730", $parsed_npm['prodi_id']);
+        $parsed_npm = $npm2018->parse("6181601011");
+        $this->assertSame("2016", $parsed_npm['enrollment_year']);
+        $this->assertSame("18", $parsed_npm['prodi_id']);
         $this->assertSame("011", $parsed_npm['no_urut']);
 
-        $parsed_npm = $npm2018->getInfo("6161801011", true);
-        $this->assertSame("2020", $parsed_npm['enrollment_year']);
-        $this->assertSame("730", $parsed_npm['prodi_id']);
+        $parsed_npm = $npm2018->getInfo("6181601011", true);
+        $this->assertSame("2016", $parsed_npm['enrollment_year']);
+        $this->assertSame("18", $parsed_npm['prodi_id']);
         $this->assertSame("011", $parsed_npm['no_urut']);
         $this->assertSame("7", $parsed_npm['fakultas_id']);
     }
@@ -57,7 +57,7 @@ class Npm2018Test extends TestCase
         // out of enrollment year
         $npm2018 = new \Chez14\NpmParser\Solvers\NPM2018();
         $this->expectException(BadEnrollmentYear::class);
-        $parsed_npm = $npm2018->getInfo("6161801001");
+        $parsed_npm = $npm2018->getInfo("6181601001");
     }
 
     /**
@@ -69,7 +69,7 @@ class Npm2018Test extends TestCase
         // bad jurusan
         $npm2018 = new \Chez14\NpmParser\Solvers\NPM2018();
         $this->expectException(NotParseable::class);
-        $parsed_npm = $npm2018->getInfo("6183001001");
+        $parsed_npm = $npm2018->getInfo("6301801001");
     }
     /**
      * @testdox Npm2018 able to detect npm malformat
