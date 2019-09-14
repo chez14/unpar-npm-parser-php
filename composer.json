@@ -1,6 +1,7 @@
 {
     "name": "chez14/unpar-npm-parser",
-    "description": "Parse all of those NPMs.",
+    "description": "Parahyangan Catholic University NPM Parser.",
+    "keywords": ["unpar", "parahyangan", "npm", "parser", "npmparser", "php"],
     "type": "library",
     "license": "MIT",
     "authors": [
