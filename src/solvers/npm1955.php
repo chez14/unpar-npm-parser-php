@@ -163,7 +163,7 @@ class NPM1995 implements SolverInterface
         //jenjang
         $jenjang = self::$jenjang['1'];
         if (array_key_exists("jenjang", self::$jurusan[$result['jurusan_id']])) {
-            $fakultas = self::$jenjang[self::$jurusan[$result['jurusan_id']]['jenjang']];
+            $jenjang = self::$jenjang[self::$jurusan[$result['jurusan_id']]['jenjang']];
         }
         $result['jenjang'] = $jenjang;
 
