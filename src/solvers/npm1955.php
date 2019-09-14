@@ -2,9 +2,9 @@
 
 namespace Chez14\NpmParser\Solvers;
 
+use Chez14\NpmParser\SolverInterface;
 use Exception\BadEnrollmentYear;
 use Exception\NotParseable;
-use InvalidArgumentException;
 
 /**
  * Solver untuk NPM yang sudah ada sejak UNPAR berdiri.
@@ -111,11 +111,12 @@ class NPM1995 implements SolverInterface
         if (strlen($npm) != 10) {
             throw new NotParseable();
         }
-
+        // 2000 730 000
+        // 0123 456 789
         return [
-            "enrollment_year" => substr($npm, 0, 3),
-            "jurusan_id" => substr($npm, 4, 6),
-            "npm" => substr($npm, 6, 9)
+            "enrollment_year" => substr($npm, 0, 4),
+            "jurusan_id" => substr($npm, 4, 3),
+            "npm" => substr($npm, 7, 3)
         ];
     }
 
@@ -131,7 +132,7 @@ class NPM1995 implements SolverInterface
         if (!($result['enrollment_year'] < 2018 && $result['enrollment_year'] > 1994)) {
             throw new BadEnrollmentYear();
         }
-        if (!in_array($result['jurusan_id'], $this->jurusan)) {
+        if (!array_key_exists($result['jurusan_id'], self::$jurusan)) {
             throw new NotParseable();
         }
         return true;
@@ -149,20 +150,20 @@ class NPM1995 implements SolverInterface
             }
         }
 
-        $result['jurusan'] = $this->jurusan[$result['jurusan_id']][0];
+        $result['jurusan'] = self::$jurusan[$result['jurusan_id']][0];
 
         //fakultas
         $fakultas = $result['jurusan_id'][0];
-        if (array_key_exists("fakultas", $this->jurusan[$result['jurusan_id']])) {
-            $fakultas = $this->jurusan[$result['jurusan_id']]['fakultas'];
+        if (array_key_exists("fakultas", self::$jurusan[$result['jurusan_id']])) {
+            $fakultas = self::$jurusan[$result['jurusan_id']]['fakultas'];
         }
         $result['fakultas_id'] = $fakultas;
-        $result['fakultas'] = $this->fakultas[$fakultas];
+        $result['fakultas'] = self::$fakultas[$fakultas];
 
         //jenjang
-        $jenjang = $this->jenjang['1'];
-        if (array_key_exists("jenjang", $this->jurusan[$result['jurusan_id']])) {
-            $fakultas = $this->jurusan[$result['jurusan_id']]['jenjang'];
+        $jenjang = self::$jenjang['1'];
+        if (array_key_exists("jenjang", self::$jurusan[$result['jurusan_id']])) {
+            $fakultas = self::$jenjang[self::$jurusan[$result['jurusan_id']]['jenjang']];
         }
         $result['jenjang'] = $jenjang;
 

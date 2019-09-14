@@ -15,5 +15,14 @@
         "platform": {
             "php": "^7.2"
         }
+    },
+    "scripts": {
+        "test-dry": "phpunit --testdox",
+        "test": "composer require phpunit/phpunit && phpunit --testdox"
+    },
+    "autoload": {
+        "psr-4": {
+            "Chez14\\NpmParser\\" : "src/"
+        }
     }
 }
