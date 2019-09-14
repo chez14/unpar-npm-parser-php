@@ -1,6 +1,6 @@
 # NPM Parser for UNPAR
 
-![Packagist](https://img.shields.io/packagist/l/chez14/unpar-npm-parser) 
+[![Latest Stable Version](https://poser.pugx.org/chez14/unpar-npm-parser/v/stable?format=flat-square)](https://packagist.org/packages/chez14/unpar-npm-parser) [![Total Downloads](https://poser.pugx.org/chez14/unpar-npm-parser/downloads?format=flat-square)](https://packagist.org/packages/chez14/unpar-npm-parser) [![Latest Unstable Version](https://poser.pugx.org/chez14/unpar-npm-parser/v/unstable?format=flat-square)](https://packagist.org/packages/chez14/unpar-npm-parser) [![License](https://poser.pugx.org/chez14/unpar-npm-parser/license?format=flat-square)](https://packagist.org/packages/chez14/unpar-npm-parser)
 
 UNPAR (Parahyangan Catholic University) recently got their system updated, so things like NPM got changed too. This will helps to parse the weirdness of those NPMs.
 
