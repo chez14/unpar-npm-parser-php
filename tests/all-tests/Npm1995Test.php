@@ -81,7 +81,7 @@ class Npm1995Test extends TestCase
         // bad faculty
         $npm1955 = new \Chez14\NpmParser\Solvers\NPM1995();
         $this->expectException(NotParseable::class);
-        $parsed_npm = $npm1955->getInfo("2016830011");
+        $parsed_npm = $npm1955->getInfo("2016930011");
     }
 
     /**
