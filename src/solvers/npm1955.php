@@ -17,10 +17,6 @@ use Exception\NotParseable;
  */
 class NPM1995 implements SolverInterface
 {
-
-    protected static
-        $regex = "/([0-9]{4})([0-9]{3})([0-9]{3})/";
-
     public static
         $jenjang = [
             "D3",
