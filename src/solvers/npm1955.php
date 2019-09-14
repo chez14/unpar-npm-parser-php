@@ -112,7 +112,7 @@ class NPM1995 implements SolverInterface
         return [
             "enrollment_year" => substr($npm, 0, 4),
             "prodi_id" => substr($npm, 4, 3),
-            "npm" => substr($npm, 7, 3)
+            "no_urut" => substr($npm, 7, 3)
         ];
     }
 

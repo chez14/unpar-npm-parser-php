@@ -21,7 +21,7 @@ array(7) {
   string(4) "2016"
   ["prodi_id"]=>
   string(3) "730"
-  ["npm"]=>
+  ["no_urut"]=>
   string(3) "011"
   ["jurusan"]=>
   string(18) "Teknik Informatika"

@@ -101,7 +101,7 @@ class NPM2018 implements SolverInterface
             "prodi_id" => substr($npm, 1, 2),
             "enrollment_year" => "20" . substr($npm, 3, 2),
             "jenis_mahasiswa" => substr($npm, 5, 2),
-            "npm" => substr($npm, 7, 3)
+            "no_urut" => substr($npm, 7, 3)
         ];
     }
 
