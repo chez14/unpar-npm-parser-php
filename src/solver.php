@@ -45,7 +45,7 @@ class Solver
      * Get all information about this NPM. Including Jurusan, Fakultas, and Jenjang.
      *
      * @param string $npm
-     * @return array a bunch of infos in an array with keys: `npm`, `jurusan`, 
+     * @return array a bunch of infos in an array with keys: `no_urut`, `jurusan`, 
      *      `prodi_id`, `fakultas`, `fakultas_id`, and `jenjang`.
      */
     public static function getInfo(string $npm): array
@@ -53,6 +53,20 @@ class Solver
         $parser = self::getSuitableParser($npm);
 
         return $parser->getInfo($npm);
+    }
+
+    /**
+     * Parse given npm into several raw data part.
+     *
+     * @param string $npm
+     * @return array a bunch of infos in an array with keys: `no_urut`, `jurusan`, 
+     *      `prodi_id`, `fakultas_id`, and `jenjang`.
+     */
+    public static function parse(string $npm): array
+    {
+        $parser = self::getSuitableParser($npm);
+
+        return $parser->parse($npm);
     }
 
     /**
