@@ -100,9 +100,8 @@ class Transformer
             throw new NotTransformable("Invalid `jenjang_id`");
         }
 
-        $jenjang = self::$jenjang_1895[$result['jenjang_id_raw']];
-        $query = $result['prodi_id'] . $jenjang;
-        return self::transform(self::$transform_1895, $query);
+        $query = $result['prodi_id'];
+        return array_merge($result, self::transform(self::$transform_9518, $query));
     }
 
     public static function toNpm1955(array $npm): array
@@ -115,7 +114,7 @@ class Transformer
 
         $jenjang = self::$jenjang_9518[$result['jenjang_id_raw']];
         $query = $result['prodi_id'] . $jenjang;
-        return self::transform(self::$transform_1895, $query);
+        return array_merge($result, self::transform(self::$transform_1895, $query));
     }
 
     /**
@@ -141,7 +140,7 @@ class Transformer
     protected static function transform(array $dictionary, string $query): array
     {
         if (!array_key_exists($query, $dictionary)) {
-            throw new NotTransformable("Invalid `jenjang_id` and `prodi_id` combination.");
+            throw new NotTransformable("Invalid `jenjang_id` and `prodi_id` combination. Got " . $query);
         }
         $query = $dictionary[$query];
 

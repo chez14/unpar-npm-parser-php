@@ -168,7 +168,7 @@ class NPM1995 implements SolverInterface
             $result = Transformer::toNpm2018($result);
         } catch (\Exception\NotTransformable $e) {
             if(!$force) {
-                throw new NotParseable("Not transformable", 0, $e);
+                throw new NotParseable("Not transformable: " . $e->getMessage(), 0, $e);
             }
         }
         return $result;
