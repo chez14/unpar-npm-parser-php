@@ -9,7 +9,7 @@ use InvalidArgumentException;
  */
 class BadEnrollmentYear extends InvalidArgumentException
 {
-    public function __construct($message = 'Enrollment year is out-of-range', $code = 0, Exception $previous = null)
+    public function __construct($message = 'Enrollment year is out-of-range', $code = 0, \Exception $previous = null)
     {
         parent::__construct($message, $code, $previous);
     }
