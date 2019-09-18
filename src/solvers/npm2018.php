@@ -40,7 +40,7 @@ class NPM2018 implements SolverInterface
 
     public static
         /**
-         * Array of Jurusans on Kurikulum 2013. For students enrollment year <=2017.
+         * Array of Jurusans on Kurikulum 2018. For students enrollment year > 2018.
          */
         $jurusan = [
             "01"=>["Ilmu Ekonomi", "fakultas"=>"1"],

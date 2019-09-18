@@ -3,6 +3,7 @@
 namespace Chez14\NpmParser\Solvers;
 
 use Chez14\NpmParser\SolverInterface;
+use Chez14\NpmParser\Transformer;
 use Exception\BadEnrollmentYear;
 use Exception\NotParseable;
 
@@ -19,12 +20,11 @@ class NPM1995 implements SolverInterface
 {
     public static
         $jenjang = [
-            "D3",
-            "S1",
-            "Profesi",
-            "S2",
-            "S3",
-            "D3",
+            "5"=> "D3",
+            "6"=> "S1",
+            "7"=> "Profesi",
+            "8"=> "S2",
+            "9"=> "S3"
         ];
 
     public static
@@ -47,7 +47,7 @@ class NPM1995 implements SolverInterface
             "110" => ["Ekonomi Pembangunan"],
             "120" => ["Manajemen"],
             "130" => ["Akutansi"],
-            "910" => ["Manajemen Perusahaan", "jenjang" => 0, "fakultas" => "1"],
+            "910" => ["Manajemen Perusahaan", "jenjang" => "5", "fakultas" => "1"],
 
             "200" => ["Ilmu Hukum"],
 
@@ -68,20 +68,20 @@ class NPM1995 implements SolverInterface
             "720" => ["Fisika"],
             "730" => ["Teknik Informatika"],
 
-            "801" => ["Ilmu Administrasi Bisnis", "jenjang" => 3],
-            "811" => ["Manajemen", "jenjang" => 3],
-            "812" => ["Ilmu Ekonomi", "jenjang" => 4],
-            "821" => ["Ilmu Hukum", "jenjang" => 3],
-            "822" => ["Ilmu Hukum", "jenjang" => 4],
-            "831" => ["Teknik Sipil", "jenjang" => 3],
-            "832" => ["Ilmu Teknik Sipil", "jenjang" => 4],
-            "841" => ["Arsitektur", "jenjang" => 3],
-            "842" => ["Arsitektur", "jenjang" => 4],
-            "851" => ["Ilmu Sosial", "jenjang" => 3],
-            "861" => ["Ilmu Teologi", "jenjang" => 3],
-            "871" => ["Teknik Kimia", "jenjang" => 3],
-            "881" => ["Magister Teknik Industri", "jenjang" => 3],
-            "891" => ["Magister Hubungan Internasional", "jenjang" => 3],
+            "801" => ["Ilmu Administrasi Bisnis", "jenjang" => "8"],
+            "811" => ["Manajemen", "jenjang" => "8"],
+            "812" => ["Ilmu Ekonomi", "jenjang" => "9"],
+            "821" => ["Ilmu Hukum", "jenjang" => "8"],
+            "822" => ["Ilmu Hukum", "jenjang" => "9"],
+            "831" => ["Teknik Sipil", "jenjang" => "8"],
+            "832" => ["Ilmu Teknik Sipil", "jenjang" => "9"],
+            "841" => ["Arsitektur", "jenjang" => "8"],
+            "842" => ["Arsitektur", "jenjang" => "9"],
+            "851" => ["Ilmu Sosial", "jenjang" => "8"],
+            "861" => ["Ilmu Teologi", "jenjang" => "8"],
+            "871" => ["Teknik Kimia", "jenjang" => "8"],
+            "881" => ["Magister Teknik Industri", "jenjang" => "8"],
+            "891" => ["Magister Hubungan Internasional", "jenjang" => "8"],
         ];
 
 
@@ -157,12 +157,20 @@ class NPM1995 implements SolverInterface
         $result['fakultas'] = self::$fakultas[$fakultas];
 
         //jenjang
-        $jenjang = self::$jenjang['1'];
+        $jenjang = '6';
         if (array_key_exists("jenjang", self::$jurusan[$result['prodi_id']])) {
-            $jenjang = self::$jenjang[self::$jurusan[$result['prodi_id']]['jenjang']];
+            $jenjang = self::$jurusan[$result['prodi_id']]['jenjang'];
         }
-        $result['jenjang'] = $jenjang;
-
+        $result['jenjang_id'] =$jenjang;
+        $result['jenjang'] = self::$jenjang[$jenjang];
+        
+        try {
+            $result = Transformer::toNpm2018($result);
+        } catch (\Exception\NotTransformable $e) {
+            if(!$force) {
+                throw new NotParseable("Not transformable", 0, $e);
+            }
+        }
         return $result;
     }
 }
