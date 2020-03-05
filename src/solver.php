@@ -31,7 +31,7 @@ class Solver
         $parsers = self::getParsersInstance();
         foreach ($parsers as $p) {
             try {
-                if ($p->parse($npm)) {
+                if ($p->isParseable($npm)) {
                     return $p;
                 }
             } catch (\Exception $e) {
