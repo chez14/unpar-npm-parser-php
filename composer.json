@@ -1,7 +1,14 @@
 {
     "name": "chez14/unpar-npm-parser",
     "description": "Parahyangan Catholic University NPM Parser.",
-    "keywords": ["unpar", "parahyangan", "npm", "parser", "npmparser", "php"],
+    "keywords": [
+        "unpar",
+        "parahyangan",
+        "npm",
+        "parser",
+        "npmparser",
+        "php"
+    ],
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -22,8 +29,8 @@
         "test": "composer require phpunit/phpunit && phpunit --testdox"
     },
     "autoload": {
-        "psr-4": {
-            "Chez14\\NpmParser\\" : "src/"
-        }
+        "classmap": [
+            "src/"
+        ]
     }
 }
