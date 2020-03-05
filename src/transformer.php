@@ -96,7 +96,11 @@ class Transformer
     {
         $result = self::pretransform($npm);
 
-        if (!array_key_exists($result['jenjang_id_raw'], self::$jenjang_1895)) {
+        if ($result['enrollment_year'] >= 2018) {
+            return $npm;
+        }
+
+        if (!array_key_exists($result['jenjang_id_raw'], self::$jenjang_9518)) {
             throw new NotTransformable("Invalid `jenjang_id`");
         }
 
@@ -108,7 +112,11 @@ class Transformer
     {
         $result = self::pretransform($npm);
 
-        if (!array_key_exists($result['jenjang_id_raw'], self::$jenjang_9518)) {
+        if ($result['enrollment_year'] < 2018) {
+            return $npm;
+        }
+
+        if (!array_key_exists($result['jenjang_id_raw'], self::$jenjang_1895)) {
             throw new NotTransformable("Invalid `jenjang_id`");
         }
 

@@ -97,7 +97,7 @@ class NPM2018 implements SolverInterface
         // 6 02 18 01 001
         // 0 12 34 56 789
         return [
-            "jenjang" => substr($npm, 0, 1),
+            "jenjang_id" => substr($npm, 0, 1),
             "prodi_id" => substr($npm, 1, 2),
             "enrollment_year" => "20" . substr($npm, 3, 2),
             "jenis_mahasiswa" => substr($npm, 5, 2),
@@ -120,7 +120,7 @@ class NPM2018 implements SolverInterface
         if (!array_key_exists($result['prodi_id'], self::$jurusan)) {
             throw new NotParseable();
         }
-        if (!array_key_exists($result['jenjang'], self::$jenjang)) {
+        if (!array_key_exists($result['jenjang_id'], self::$jenjang)) {
             throw new NotParseable();
         }
         if (!array_key_exists($result['jenis_mahasiswa'], self::$jenis_mahasiswa)) {
@@ -145,14 +145,14 @@ class NPM2018 implements SolverInterface
 
         //fakultas
         $fakultas = self::$jurusan[$result['prodi_id']]['fakultas'];
-        if($result['jenjang'] == "8" || $result['jenjang'] == "9") {
+        if($result['jenjang_id'] == "8" || $result['jenjang_id'] == "9") {
             $fakultas = "8";
         }
         $result['fakultas_id'] = $fakultas;
         $result['fakultas'] = $fakultas?self::$fakultas[$fakultas]:null;
 
         //jenjang
-        $jenjang = $result['jenjang'];
+        $jenjang = $result['jenjang_id'];
         $result['jenjang'] = self::$jenjang[$jenjang];
 
         return $result;

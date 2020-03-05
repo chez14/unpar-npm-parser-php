@@ -20,11 +20,11 @@ class NPM1995 implements SolverInterface
 {
     public static
         $jenjang = [
-            "5"=> "D3",
-            "6"=> "S1",
-            "7"=> "Profesi",
-            "8"=> "S2",
-            "9"=> "S3"
+            "5" => "D3",
+            "6" => "S1",
+            "7" => "Profesi",
+            "8" => "S2",
+            "9" => "S3"
         ];
 
     public static
@@ -112,7 +112,7 @@ class NPM1995 implements SolverInterface
         return [
             "enrollment_year" => substr($npm, 0, 4),
             "prodi_id" => substr($npm, 4, 3),
-            "no_urut" => substr($npm, 7, 3)
+            "no_urut" => substr($npm, 7, 3),
         ];
     }
 
@@ -161,13 +161,13 @@ class NPM1995 implements SolverInterface
         if (array_key_exists("jenjang", self::$jurusan[$result['prodi_id']])) {
             $jenjang = self::$jurusan[$result['prodi_id']]['jenjang'];
         }
-        $result['jenjang_id'] =$jenjang;
+        $result['jenjang_id'] = $jenjang;
         $result['jenjang'] = self::$jenjang[$jenjang];
-        
+
         try {
             $result = Transformer::toNpm2018($result);
         } catch (\Exception\NotTransformable $e) {
-            if(!$force) {
+            if (!$force) {
                 throw new NotParseable("Not transformable: " . $e->getMessage(), 0, $e);
             }
         }
