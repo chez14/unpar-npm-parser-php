@@ -100,8 +100,8 @@ class Transformer
             return $npm;
         }
 
-        if (!array_key_exists($result['jenjang_id_raw'], self::$jenjang_9518)) {
-            throw new NotTransformable("Invalid `jenjang_id`");
+        if (!array_key_exists($result['jenjang_id_raw'], self::$jenjang_1895)) {
+            throw new NotTransformable("Invalid `jenjang_id`, got " . $result['jenjang_id_raw'] . " from " . json_encode($result));
         }
 
         $query = $result['prodi_id'];
@@ -116,8 +116,8 @@ class Transformer
             return $npm;
         }
 
-        if (!array_key_exists($result['jenjang_id_raw'], self::$jenjang_1895)) {
-            throw new NotTransformable("Invalid `jenjang_id`");
+        if (!array_key_exists($result['jenjang_id_raw'], self::$jenjang_9518)) {
+            throw new NotTransformable("Invalid `jenjang_id`, got " . $result['jenjang_id_raw'] . " from " . json_encode($result));
         }
 
         $jenjang = self::$jenjang_9518[$result['jenjang_id_raw']];
