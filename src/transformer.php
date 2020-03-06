@@ -153,7 +153,7 @@ class Transformer
         }
         $query = $dictionary[$query];
         $result["prodi_id"] = substr($query, 1, 2);
-        $result["jenjang_id"] = substr($query, 1, 1);
+        $result["jenjang_id"] = substr($query, 0, 1);
         return $result;
     }
 }
