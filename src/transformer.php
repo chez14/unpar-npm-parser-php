@@ -105,6 +105,7 @@ class Transformer
         }
 
         $query = $result['prodi_id'];
+
         return array_merge($result, self::transform(self::$transform_9518, $query));
     }
 
@@ -151,8 +152,7 @@ class Transformer
             throw new NotTransformable("Invalid `jenjang_id` and `prodi_id` combination. Got " . $query);
         }
         $query = $dictionary[$query];
-
-        $result["prodi_id"] = substr($query, 2, 2);
+        $result["prodi_id"] = substr($query, 1, 2);
         $result["jenjang_id"] = substr($query, 1, 1);
         return $result;
     }
